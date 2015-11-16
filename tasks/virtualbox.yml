@@ -1,0 +1,24 @@
+---
+
+- name: shell | get VirtualBox version
+  shell: cat /home/vagrant/.vbox_version
+  register: virtualbox_version
+
+- name: mount | mount VirtualBox guest additions ISO
+  mount:
+    name: /tmp/vbox
+    src: "/home/vagrant/VBoxGuestAdditions_{{ virtualbox_version.stdout }}.iso"
+    opts: loop
+    state: mounted
+    fstype: iso9660
+
+- name: shell | run VirtualBox guest additions installation
+  shell: sh /tmp/vbox/VBoxLinuxAdditions.run
+  failed_when: false
+
+- name: mount | unmount VirtualBox guest additions ISO
+  mount:
+    name: /tmp/vbox
+    src: "/home/vagrant/VBoxGuestAdditions_{{ virtualbox_version.stdout }}.iso"
+    state: unmounted
+    fstype: iso9660
