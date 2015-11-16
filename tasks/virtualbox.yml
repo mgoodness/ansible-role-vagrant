@@ -12,9 +12,22 @@
     state: mounted
     fstype: iso9660
 
-- name: shell | run VirtualBox guest additions installation
-  shell: sh /tmp/vbox/VBoxLinuxAdditions.run
+- name: apt | install build dependencies
+  apt:
+    name: {{ item }}
+    state: present
+  with_items: build_dependencies
+
+- name: command | run VirtualBox guest additions installation
+  command: sh /tmp/vbox/VBoxLinuxAdditions.run
   failed_when: false
+
+- name: apt | uninstall build dependencies
+  apt:
+    name: {{ item }}
+    purge: true
+    state: absent
+  with_items: build_dependencies
 
 - name: mount | unmount VirtualBox guest additions ISO
   mount:

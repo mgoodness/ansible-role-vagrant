@@ -1,9 +1,6 @@
 # /roles/vagrant/tasks/main.yml
 ---
 
-- name: shell | ensure correct kernel headers are installed
-  shell: "apt-get -y install linux-headers-$(uname -r)"
-
 - name: lineinfile | configure SSH daemon for Vagrant
   lineinfile:
     dest: /etc/ssh/sshd_config

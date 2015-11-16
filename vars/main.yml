@@ -1,0 +1,6 @@
+# /roles/vagrant/vars/main.yml
+---
+
+build_dependencies:
+  - build-essential
+  - linux-headers-{{ ansible_kernel }}
