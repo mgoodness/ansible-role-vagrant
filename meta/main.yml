@@ -1,4 +1,4 @@
-# /roles/vagrant/meta/main.yml
+# ansible-role-vagrant/meta/main.yml
 ---
 
 dependencies: []

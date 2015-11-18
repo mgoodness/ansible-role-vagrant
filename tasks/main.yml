@@ -1,4 +1,4 @@
-# /roles/vagrant/tasks/main.yml
+# ansible-role-vagrant/tasks/main.yml
 ---
 
 - name: lineinfile | configure SSH daemon for Vagrant

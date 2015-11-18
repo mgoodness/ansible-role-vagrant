@@ -1,4 +1,4 @@
-# /roles/vagrant/vars/main.yml
+# ansible-role-vagrant/vars/main.yml
 ---
 
 build_dependencies:
